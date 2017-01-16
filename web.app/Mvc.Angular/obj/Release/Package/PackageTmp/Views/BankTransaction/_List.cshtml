@@ -1,0 +1,61 @@
+﻿<div class="row" ng-controller="bankTransactionController as vm" ng-init="vm.initializeController()">
+    <rd-widget>
+        <rd-widget-header icon="fa-tasks" title="{{vm.title}}">
+        </rd-widget-header>
+        <rd-widget-body>
+            <div class="table-responsive" style="padding-top: 20px;">
+                <div class="control-group">
+                    <div class="pull-right">
+                        <input type="text" class="form-control" placeholder="Search Transaction" ng-model="searchTransaction" />
+                    </div>
+                </div>
+                <table class="table" style="width: 100%; margin-top: 30px;">
+                    <thead>
+
+                        <tr>
+                            <th colspan="2" style="width: 50%">
+                                <span ng-bind="vm.totalTransactions"></span>&nbsp;Transactions
+                            </th>
+                            <th colspan="5" style="text-align: right; width: 50%">
+                                Page&nbsp;<span ng-bind="vm.currentPageNumber"></span>&nbsp;of&nbsp;
+                                <span ng-bind="vm.totalPages"></span>
+                            </th>
+                        </tr>
+
+                        <tr>
+                            <th ng:repeat="tableHeader in vm.tableHeaders" style="text-decoration: underline" ng:class="vm.setSortIndicator(tableHeader.label)" ng:click="vm.changeSorting(tableHeader.label)">{{tableHeader.label}}</th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="t in vm.transactions | filter : searchTransaction">
+
+                            <td style="width: 30%; white-space: nowrap">
+                                <div ng-bind="t.BankCode"></div>
+                            </td>
+                            <td style="width: 30%; white-space: nowrap">
+                                <div ng-bind="t.TransactionDate | date:'MM/dd/yyyy'"></div>
+                            </td>
+
+                            @*<td style="width: 20%; white-space: nowrap">
+                                    <div>{{t.TransactionDescription}}</div></td>
+                                <td style="width: 20%; white-space: nowrap">
+                                    <div>{{t.TransactionDetails}}</div></td>
+                                <td style="width: 20%; white-space: nowrap"><div>{{t.TransactionType == '1'? 'Debit':'Credit'}}</div></td>*@
+                            <td style="width: 20%; white-space: nowrap">
+                                <div>{{t.CreditAmount | currency: "P"}}</div>
+                            </td>
+                            @*<td style="width: 20%; white-space: nowrap">
+                                <div>{{t.DebitAmount | currency: "P"}}</div></td>*@
+                            <td style="width: 20%; white-space: nowrap">
+                                <div>{{t.TransactionStatus == '1'? 'Pending': 'Settled'}}</div>
+                            </td>
+                            <td style="width: 20%; white-space: nowrap"><a ui-sref="transaction({ id: t.TransactionId})" style="cursor: pointer; text-decoration: underline; color: black">Edit</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <ul uib-pagination boundary-links="true" total-items="vm.totalTransactions" items-per-page="vm.pageSize" ng-model="vm.currentPageNumber" ng-change="vm.pageChanged()"></ul>
+        </rd-widget-body>
+    </rd-widget>
+</div>

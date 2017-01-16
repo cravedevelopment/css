@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:1131/Queue.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/Message" />
+  <xs:element name="AddMessageGet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="assembly" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddMessageGetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddMessageGetResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddMessagePost">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="assembly" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddMessagePostResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddMessagePostResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RunPluginGet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="assembly" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RunPluginGetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RunPluginGetResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RunPluginPost">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="assembly" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RunPluginPostResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RunPluginPostResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AuthenticateUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AuthenticateUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AuthenticateUserResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AuthenticateUserByEncryptedObject">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="obj" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AuthenticateUserByEncryptedObjectResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AuthenticateUserByEncryptedObjectResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AuthenticateToken">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AuthenticateTokenResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AuthenticateTokenResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckToken">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckTokenResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CheckTokenResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StreamMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="assembly" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StreamMessageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.microsoft.com/Message" name="StreamMessageResult" type="q1:StreamBody" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

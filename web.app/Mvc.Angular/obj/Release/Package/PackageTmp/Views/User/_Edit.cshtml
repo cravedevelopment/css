@@ -1,0 +1,75 @@
+﻿<div ng-controller="userEditController as vm" ng-init="vm.initializeController()">
+    <rd-widget>
+        <rd-widget-header icon="fa-tasks" title="{{vm.title}}">
+        </rd-widget-header>
+        <rd-widget-body>
+            <div class="box" style="width: 100%">
+                <div class="box-content">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label required">User Name</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" ng-model="vm.userMasterDetail.UserName" ng-class="{'validation-error': vm.AccountNumberInputError}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Password</label>
+                            <div class="col-sm-4">
+                                <input type="password" class="form-control" ng-model="vm.userMasterDetail.Password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">First Name</label>
+
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" ng-model="vm.userMasterDetail.User.FirstName">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Last Name</label>
+
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" ng-model="vm.userMasterDetail.User.LastName">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Email Address</label>
+
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" ng-model="vm.userMasterDetail.User.EmailAddress">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Select a role(s) for this group</label>
+                            <div class="col-sm-4">
+                                <div class="input-control checkbox" ng-repeat="r in vm.roles">
+                                    <label>
+                                        <input type="checkbox" name="vm.selectedRoles[]"
+                                               value="r.RoleId"
+                                               ng-checked="vm.selectedRoles.indexOf(r.RoleId) > -1"
+                                               ng-click="vm.toggleSelection(vm.selectedRoles, r.RoleId)" />
+                                        {{r.RoleName}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <button class="btn btn-primary btn-label-left" ui-sref="users" href="#/users">
+                <span><i class="fa fa-arrow-left"></i></span>
+                <b>Back</b>
+            </button>
+            <button class="btn btn-success btn-label-left" ng-click="vm.saveUser()">
+                <span><i class="fa fa-save"></i></span>
+                <b>Save</b>
+            </button>
+            <div style="padding-top:20px">
+                <div uib-alert ng-repeat="alert in vm.alerts" ng-class="'alert-' + (alert.type || 'warning')" close="vm.closeAlert($index)">
+                    <div ng-bind-html="vm.messageBox"></div>
+                </div>
+            </div>
+        </rd-widget-body>
+    </rd-widget>
+</div>

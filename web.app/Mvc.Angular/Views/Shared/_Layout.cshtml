@@ -1,0 +1,142 @@
+﻿@using System.Web.Optimization
+@using Core.Security.Model
+@using CSS.MVC.Angular.Models
+@{
+    var version = typeof(MvcApplication).Assembly.GetName().Version.ToString();
+    var baseUrl = System.Configuration.ConfigurationManager.AppSettings["BaseUrl"].ToString();
+    var bundles = new List<CustomBundle>();
+    var codeProjectBundles = new List<string> { "home", "accounts", "transaction" };
+    var session = (UserMaster)Session["UserSession"];
+
+    foreach (string controller in codeProjectBundles)
+    {
+        var customBundle = new CustomBundle
+        {
+            BundleName = controller,
+            Path = BundleTable.Bundles.ResolveBundleUrl("~/bundles/" + controller),
+            IsLoaded = false
+        };
+        bundles.Add(customBundle);
+    }
+
+    BundleInformation bundleInformation = new BundleInformation { Bundles = bundles };
+    string bundleInformationJson = Newtonsoft.Json.JsonConvert.SerializeObject(bundleInformation, Newtonsoft.Json.Formatting.None);
+}
+
+<!DOCTYPE html>
+<html ng-app="RDash">
+<head>
+
+ 
+    <title>CSS</title>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Styles.Render("~/bundles/css")
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/rdash")
+    @Scripts.Render("~/bundles/shared")
+</head>
+
+<body>
+    <div ng-controller="MasterCtrl">
+        <div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak>
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper" ng-app="cssApp" ng-init="vm.initializeController()">
+                <ul class="sidebar">
+                    <li class="sidebar-main">
+                        <a ng-click="toggleSidebar()">
+                            Dashboard
+                            <span class="menu-icon glyphicon glyphicon-transfer"></span>
+                        </a>
+                    </li>
+                    <li class="sidebar-title"><span>NAVIGATION</span></li>
+                    <li class="sidebar-list">
+                        <a ui-sref="dashboard">Dashboard <span class="menu-icon fa fa-tachometer"></span></a>
+                    </li>
+                    <li class="sidebar-list">
+                        <a ui-sref="accounts">Bank Account <span class="menu-icon fa fa-user"></span></a>
+                    </li>
+                    <li class="sidebar-list">
+                        <a ui-sref="transactions">Bank Transaction <span class="menu-icon fa fa-arrow-circle-o-down"></span></a>
+                    </li>
+                    <li class="sidebar-list">
+                        <a ui-sref="reportimports">Import Transaction <span class="menu-icon fa fa-angle-double-right"></span></a>
+                    </li>
+                    <li class="sidebar-list">
+                        <a ui-sref="transferinstructions">Transfer Instruction <span class="menu-icon fa fa-arrow-circle-o-up"></span></a>
+                    </li>
+                    <li class="sidebar-list">
+                        <a ui-sref="depositinstructions">Deposit Instruction <span class="menu-icon fa fa-dropbox"></span></a>
+                    </li>
+                    <li class="sidebar-list">
+                        <a ui-sref="cheques">Cheque <span class="menu-icon fa fa-paper-plane"></span></a>
+                    </li>
+                    <li class="sidebar-list">
+                        <a ui-sref="banks">Bank <span class="menu-icon fa fa-bank"></span></a>
+                    </li>
+                    <li class="sidebar-list">
+                        <a ui-sref="users">User <span class="menu-icon fa fa-user"></span></a>
+                    </li>
+                </ul>
+                @*<div class="sidebar-footer">
+                        <div class="col-xs-4">
+                            <a href="#" target="_blank">
+                                CSS2017
+                            </a>
+                        </div>
+                    </div>*@
+            </div>
+            <!-- End Sidebar -->
+            <div id="content-wrapper">
+                <div class="page-content">
+                    <!-- Header Bar -->
+                    <div class="row header">
+                        <div class="col-xs-12">
+                            <div class="user pull-right">
+                                <div class="item dropdown" uib-dropdown>
+                                    <a href="#" class="dropdown-toggle" uib-dropdown-toggle>
+                                        <img src="~/scripts/assets/img/avatar.jpg">
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li class="link">
+                                            <a href="@Url.Content("~/Security/Logout")">
+                                                Logout
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="meta">
+                                <div class="page">
+                                    Dashboard
+                                </div>
+                                <div class="breadcrumb-links">
+                                    Home / Dashboard
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Header Bar -->
+                    <!-- Main Content -->
+                    @RenderBody()
+                    <div ui-view></div>
+                </div><!-- End Page Content -->
+            </div><!-- End Content Wrapper -->
+        </div>
+
+        @Scripts.Render("~/bundles/home")
+        @Scripts.Render("~/bundles/accounts")
+        @Scripts.Render("~/bundles/transactions")
+        @Scripts.Render("~/bundles/banks")
+        @Scripts.Render("~/bundles/transferInstructions")
+        @Scripts.Render("~/bundles/depositInstructions")
+        @Scripts.Render("~/bundles/chequemonitoring")
+        @Scripts.Render("~/bundles/roles")
+        @Scripts.Render("~/bundles/users")
+
+        @RenderSection("scripts", required: false)
+    </div>
+</body>
+
+</html>

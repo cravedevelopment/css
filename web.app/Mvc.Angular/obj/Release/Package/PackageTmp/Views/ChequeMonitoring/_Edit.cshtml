@@ -1,0 +1,78 @@
+﻿<div ng-controller="chequeMonitoringEditController as vm" ng-init="vm.initializeController()">
+    <rd-widget>
+        <rd-widget-header icon="fa-tasks" title="{{vm.title}}">
+        </rd-widget-header>
+        <rd-widget-body>
+            <div class="box" style="width: 100%">
+                <div class="box-content">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label required">Account Number</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" ng-model="vm.AccountNumber" ng-class="{'validation-error': vm.AccountNumberInputError}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label required">Account Name</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" ng-model="vm.AccountName" ng-class="{'validation-error': vm.AccountNameInputError}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Cheque Number</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" ng-model="vm.ChequeNumber">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Cheque Date</label>
+
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" ng-model="vm.ChequeDate">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Cheque Amount</label>
+
+                            <div class="col-sm-4">
+                                <input type="number" class="form-control" ng-model="vm.ChequeAmount">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Pay to the order of</label>
+
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" ng-model="vm.PayToTheOrderOf">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Select a bank for this Cheque</label>
+                            <div class="col-sm-4">
+                                <select class="form-control" ng-model="vm.BankId" ng-options="b.BankId as b.BankName for b in vm.banks" ng-class="{'validation-error': vm.BankInputError}"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Bank Branch</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" ng-model="vm.BranchName">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <button class="btn btn-primary btn-label-left" ui-sref="cheques" href="#/cheques">
+                <span><i class="fa fa-arrow-left"></i></span>
+                <b>Back</b>
+            </button>
+            <button class="btn btn-success btn-label-left" ng-click="vm.addCheque()">
+                <span><i class="fa fa-save"></i></span>
+                <b>Save</b>
+            </button>
+            <div style="padding-top:20px">
+                <div uib-alert ng-repeat="alert in vm.alerts" ng-class="'alert-' + (alert.type || 'warning')" close="vm.closeAlert($index)">
+                    <div ng-bind-html="vm.messageBox"></div>
+                </div>
+            </div>
+        </rd-widget-body>
+    </rd-widget>
+</div>

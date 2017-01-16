@@ -1,0 +1,35 @@
+﻿<div class="row" ng-controller="bankCreateController as vm" ng-init="vm.initializeController()">
+        <rd-widget>
+            <rd-widget-header icon="fa-tasks" title="{{vm.title}}">
+            </rd-widget-header>
+            <rd-widget-body>
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label required">Bank Code</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" ng-model="vm.BankCode" ng-class="{'validation-error': vm.BankCodeInputError}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label required">Bank Name</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" ng-model="vm.BankName" ng-class="{'validation-error': vm.BankNameInputError}">
+                        </div>
+                    </div>
+                </form>
+                <button class="btn btn-primary btn-label-left" ui-sref="banks" href="#/banks">
+                    <span><i class="fa fa-arrow-left"></i></span>
+                    <b>Back</b>
+                </button>
+                <button class="btn btn-success btn-label-left" ng-click="vm.saveBank()">
+                    <span><i class="fa fa-save"></i></span>
+                    <b>Save</b>
+                </button>
+                <div style="padding-top: 20px">
+                    <div uib-alert ng-repeat="alert in vm.alerts" ng-class="'alert-' + (alert.type || 'warning')" close="vm.closeAlert($index)">
+                        <div ng-bind-html="vm.messageBox"></div>
+                    </div>
+                </div>
+            </rd-widget-body>
+        </rd-widget>
+    </div>

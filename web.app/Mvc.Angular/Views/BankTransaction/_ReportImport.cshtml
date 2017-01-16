@@ -1,0 +1,42 @@
+﻿<div id="uploader" ng-controller="uploaderController as vm" ng-init="vm.initializeController()">
+    <div class="widget">
+        <rd-widget-header icon="fa-tasks" title="{{vm.title}}">
+        </rd-widget-header>
+        <div class="widget-body">
+            <div class="widget-content">
+                <div class="box" style="width: 100%">
+                    <div class="box-content">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Select a bank for this report</label>
+                                <div class="col-sm-4">
+                                    <select class="form-control" ng-model="vm.Bank" ng-options="b.BankId + '|' + b.BankCode as b.BankName for b in vm.banks"></select>
+                                </div>
+                            </div>
+                            <div class="well">
+                                <div>
+                                    <div style="float: right;">
+                                        <button ng-click="btn_upload()">Upload</button>
+                                        @*<button ng-click="btn_clean()">Remove all</button>*@
+                                    </div>
+                                    <input type="file" id="file1" multiple />
+                                </div>
+                                <div ng-repeat="file in files track by $index" style="margin-top: 20px; border-bottom-color: antiquewhite; border-bottom-style: double;">
+                                    <div>
+                                        <span>{{file.name}}</span><div style="float: right;">
+                                            <span>{{file.humanSize}}</span><a ng-click="btn_remove(file)" title="Remove from list to be uploaded"><i class="icon-remove"></i></a>
+                                        </div>
+                                    </div>
+                                    <progress style="width: 400px;" value="{{file.loaded}}" max="{{file.size}}"></progress>
+                                </div>
+                            </div>
+                            <div uib-alert ng-repeat="alert in vm.alerts" ng-class="'alert-' + (alert.type || 'warning')" close="vm.closeAlert($index)">
+                                <div ng-bind-html="vm.messageBox"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

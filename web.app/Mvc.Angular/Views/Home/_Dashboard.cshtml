@@ -1,0 +1,68 @@
+﻿<div class="row" ng-controller="indexController" ng-init="initializeDashoard()">
+    <div class="col-lg-3 col-md-6 col-xs-12">
+        <rd-widget>
+            <rd-widget-body>
+                <div class="widget-icon green pull-left">
+                    <i class="fa fa-users"></i>
+                </div>
+                <div class="title">{{noOfTransactions}}</div>
+                <div class="comment">Transaction Count Summary</div>
+            </rd-widget-body>
+        </rd-widget>
+    </div>
+    <div class="col-lg-3 col-md-6 col-xs-12">
+        <rd-widget>
+            <rd-widget-body>
+                <div class="widget-icon red pull-left">
+                    <i class="fa fa-tasks"></i>
+                </div>
+                <div class="title">{{pendingTransactionCount}}</div>
+                <div class="comment">Pending Transaction Count Summary</div>
+            </rd-widget-body>
+        </rd-widget>
+    </div>
+    <div class="col-lg-3 col-md-6 col-xs-12">
+        <rd-widget>
+            <rd-widget-body>
+                <div class="widget-icon orange pull-left">
+                    <i class="fa fa-sitemap"></i>
+                </div>
+                <div class="title">{{settledTransactionCount}}</div>
+                <div class="comment">Settled Transaction Count Summary</div>
+            </rd-widget-body>
+        </rd-widget>
+    </div>
+    <div class="col-lg-3 col-md-6 col-xs-12">
+        <rd-widget>
+            <rd-widget-body>
+                <div class="widget-icon blue pull-left">
+                    <i class="fa fa-support"></i>
+                </div>
+                <div class="title">{{noOfInstructions}}</div>
+                <div class="comment">Bank Transfer Count Summary</div>
+            </rd-widget-body>
+        </rd-widget>
+    </div>
+    <div class="col-lg-3 col-md-6 col-xs-12">
+        <rd-widget>
+            <rd-widget-body>
+                <div class="widget-icon orange pull-left">
+                    <i class="fa fa-support"></i>
+                </div>
+                <div class="title">{{pendingInstructionsCount}}</div>
+                <div class="comment">Bank Transfer Pending Status Count Summary</div>
+            </rd-widget-body>
+        </rd-widget>
+    </div>
+    <div class="col-lg-3 col-md-6 col-xs-12">
+        <rd-widget>
+            <rd-widget-body>
+                <div class="widget-icon brown la pull-left">
+                    <i class="fa fa-support"></i>
+                </div>
+                <div class="title">{{settledInstructionsCount}}</div>
+                <div class="comment">Bank Transfer Settled Status Count Summary</div>
+            </rd-widget-body>
+        </rd-widget>
+    </div>
+</div>

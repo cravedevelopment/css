@@ -1,0 +1,106 @@
+﻿<div ng-controller="bankTransferInstructionEditController as vm" ng-init="vm.initializeController()">
+    <rd-widget>
+        <rd-widget-header icon="fa-tasks" title="{{vm.title}}">
+        </rd-widget-header>
+        <rd-widget-body>
+            <div class="box" style="width: 100%">
+                <div class="box-content">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label class="col-sm-6 control-label required">Transfer Transaction No</label>
+                                    <input type="text" class="form-control" ng-model="vm.TransactionNumber" ng-class="{'validation-error': vm.TransactionNumberInputInputError}">
+                                </div>
+                                <div class="col-lg-6">
+                                    <label class="col-sm-6 control-label">Status</label>
+                                    <select class="form-control" ng-model="vm.StatusId" ng-options="b.StatusId as b.Status for b in vm.transStatus"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label class="col-sm-6 control-label">Date Transfered</label>
+                                    <input type="text" class="form-control" ng-click="vm.openDateTransfered()" uib-datepicker-popup ng-model="vm.DateTransferred" is-open="vm.popupDateTransfered.opened" datepicker-options="dateOptions" close-text="Close" />
+                                </div>
+                                <div class="col-lg-6">
+                                    <label class="col-sm-6 control-label">Verified Date</label>
+                                    <input type="text" class="form-control" ng-click="vm.openVerifiedDate()" uib-datepicker-popup ng-model="vm.VerifiedDate" is-open="vm.popupVerifiedDate.opened" datepicker-options="dateOptions" close-text="Close" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label class="col-sm-6 control-label">Amount Verified</label>
+                                    <input type="text" class="form-control" ng-model="vm.AmountVerified">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <br><br>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label class="col-sm-6 control-label">Source Account:</label>
+                                    <label class="control-label">{{vm.SourceAccount.AccountNumber}}</label>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label class="col-sm-6 control-label">Destination Account</label>
+                                    <label class="control-label">{{vm.DestinationAccount.AccountNumber}}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label class="col-sm-6 control-label">Source Bank:</label>
+                                    <label class="control-label">{{vm.BankSourceCode}}</label>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label class="col-sm-6 control-label">Destination Bank:</label>
+                                    <label class="control-label">{{vm.BankDestinationCode}}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label class="col-sm-6 control-label">Amount:</label>
+                                    <label class="control-label">{{vm.Amount | currency: ""}}</label>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label class="col-sm-6 control-label">Reference No:</label>
+                                    <label class="control-label">{{vm.P2PLendingRefNo}}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label class="col-sm-6 control-label">Remarks:</label>
+                                <label class="control-label">{{vm.Remarks}}</label>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <br><br>
+            <button class="btn btn-primary btn-label-left" ui-sref="transferinstructions" href="#/transferinstructions">
+                <span><i class="fa fa-arrow-left"></i></span>
+                <b>Back</b>
+            </button>
+            <button class="btn btn-success btn-label-left" ng-click="vm.saveInstruction()">
+                <span><i class="fa fa-save"></i></span>
+                <b>Save</b>
+            </button>
+            <div style="padding-top:20px">
+                <div uib-alert ng-repeat="alert in vm.alerts" ng-class="'alert-' + (alert.type || 'warning')" close="vm.closeAlert($index)">
+                    <div ng-bind-html="vm.messageBox"></div>
+                </div>
+            </div>
+        </rd-widget-body>
+    </rd-widget>
+</div>

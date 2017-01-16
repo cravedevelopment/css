@@ -1,0 +1,116 @@
+﻿<div ng-controller="bankTransactionEditController as vm" ng-init="vm.initializeController()">
+    <div class="row">
+        <div class="col-lg-6">
+            <rd-widget>
+                <rd-widget-header icon="fa-tasks" title="{{vm.title}}">
+                </rd-widget-header>
+                <rd-widget-body>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label class="col-sm-6 control-label">Transaction Status</label>
+                            <select class="form-control" ng-model="vm.StatusId" ng-options="b.StatusId as b.Status for b in vm.transStatus"></select>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="col-sm-6 control-label">Verification Number:</label>
+                            <input type="text" class="form-control" ng-model="vm.VerificationNumber">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label class="col-sm-6 control-label">Date Verified:</label>
+                            <input type="text" class="form-control" ng-model="vm.DateVerified" ng-click="vm.openDateVerified()" uib-datepicker-popup is-open="vm.popupDateVerified.opened" datepicker-options="dateOptions" close-text="Close" />
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="col-sm-6 control-label">Posting Date:</label>
+                            <input type="text" class="form-control" ng-click="vm.openPostingDate()" uib-datepicker-popup ng-model="vm.PostingDate" is-open="vm.popupPostingDate.opened" datepicker-options="dateOptions" close-text="Close" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label class="col-sm-6 control-label">Transaction Remarks:</label>
+                            <input type="text" class="form-control" ng-model="vm.TransactionRemarks">
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="col-sm-6 control-label">P2P TransactionNumber:</label>
+                            <input type="text" class="form-control" ng-model="vm.P2PTransactionNumber">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label class="col-sm-6 control-label">P2P UserId:</label>
+                            <input type="text" class="form-control" ng-model="vm.P2PUserId">
+                        </div>
+
+                    </div>
+                    <div class="clearfix"></div>
+                    <br><br>
+                    <button class="btn btn-primary btn-label-left" ui-sref="transactions" href="#/transactions">
+                        <span><i class="fa fa-arrow-left"></i></span>
+                        <b>Back</b>
+                    </button>
+                    <button class="btn btn-success btn-label-left" ng-click="vm.saveTransaction()">
+                        <span><i class="fa fa-save"></i></span>
+                        <b>Save</b>
+                    </button>
+                    <div style="padding-top: 20px">
+                        <div uib-alert ng-repeat="alert in vm.alerts" ng-class="'alert-' + (alert.type || 'warning')" close="vm.closeAlert($index)">
+                            <div ng-bind-html="vm.messageBox"></div>
+                        </div>
+                    </div>
+                </rd-widget-body>
+            </rd-widget>
+        </div>
+        <div class="col-lg-6">
+            <rd-widget>
+                <rd-widget-header icon="fa-tasks" title="Details">
+                </rd-widget-header>
+                <rd-widget-body>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label class="col-sm-6 control-label">Account Number:</label>
+                            <label class="control-label">{{vm.AccountNumber}}</label>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="col-sm-6 control-label">Transaction Date:</label>
+                            <label class="control-label">{{vm.TransactionDate | date:'yyyy-MM-dd'}}</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label class="col-sm-6 control-label">Account Number:</label>
+                            <label class="control-label">{{vm.AccountNumber}}</label>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="col-sm-6 control-label">Transaction Date:</label>
+                            <label class="control-label">{{vm.TransactionDate | date:'yyyy-MM-dd'}}</label>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-lg-6">
+                            <label class="col-sm-6 control-label">Credit Amount:</label>
+                            <label class="control-label">{{vm.CreditAmount | currency: ""}}</label>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="col-sm-6 control-label">Debit Amount:</label>
+                            <label class="control-label">{{vm.DebitAmount | currency: ""}}</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label class="col-sm-6 control-label">Date Uploaded:</label>
+                            <label class="control-label">{{vm.DateUploaded | date:'yyyy-MM-dd'}}</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <label class="col-sm-3 control-label">Description:</label>
+                            <label class="col-sm-9 control-label">{{vm.TransactionDescription}}</label>
+                        </div>
+                    </div>
+                </rd-widget-body>
+            </rd-widget>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,61 @@
+﻿<div ng-controller="bankTransferInstructionController as vm" ng-init="vm.initializeController()">
+    <rd-widget>
+        <rd-widget-header icon="fa-tasks" title="{{vm.title}}">
+        </rd-widget-header>
+        <rd-widget-body>
+            <div class="table-responsive" style="padding-top: 20px;">
+                <button class="btn btn-primary btn-label-left" ui-sref="newTransferInstruction">
+                    <span><i class="icon-pencil"></i></span>
+                    <b>Create Instruction</b>
+                </button>
+                <div class="pull-right"><input type="text" class="form-control" placeholder="Search Instruction" ng-model="searchInstruction"/>
+                </div>
+                <table class="table" style="width: 100%; margin-top: 30px;">
+                    <thead>
+
+                    <tr>
+                        <th colspan="2" style="width: 50%">
+                            <span ng-bind="vm.totalInstructions"></span>&nbsp;Bank Transfers
+                        </th>
+                        <th colspan="5" style="text-align: right; width: 50%">
+                            Page&nbsp;<span ng-bind="vm.currentPageNumber"></span>&nbsp;of&nbsp;
+                            <span ng-bind="vm.totalPages"></span>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <th ng:repeat="tableHeader in vm.tableHeaders" style="text-decoration: underline" ng:class="vm.setSortIndicator(tableHeader.label)" ng:click="vm.changeSorting(tableHeader.label)">{{tableHeader.label}}</th>
+                    </tr>
+
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="t in vm.instructions | filter : searchInstruction">
+
+                        <td style="width: 30%; white-space: nowrap">
+                            <div ng-bind="t.Amount | currency: 'P'"></div></td>
+                        <td style="width: 30%; white-space: nowrap">
+                            <div ng-bind="t.DateCreated | date:'MM/dd/yyyy'"></div></td>
+
+                        <td style="width: 20%; white-space: nowrap">
+                            <div>{{t.DateTransferred | date:'MM/dd/yyyy'}}</div>
+                        </td>
+                        <td style="width: 20%; white-space: nowrap">
+                            <div>{{t.P2PLendingRefNo}}</div>
+                        </td>
+                        <td style="width: 20%; white-space: nowrap">
+                            <div>{{t.BankSourceCode}}</div></td>
+                        <td style="width: 20%; white-space: nowrap">
+                            <div>{{t.BankDestinationCode}}</div>
+                        </td>
+                        <td style="width: 20%; white-space: nowrap">
+                            <div>{{t.Status == '1'? 'Pending': 'Settled'}}</div>
+                        </td>
+                        <td style="width: 20%; white-space: nowrap"><a ui-sref="transferinstruction({ id: t.Id})" style="cursor: pointer; text-decoration: underline; color: black">Edit</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <ul uib-pagination boundary-links="true" total-items="vm.totalInstructions" items-per-page="vm.pageSize" ng-model="vm.currentPageNumber" ng-change="vm.pageChanged()"></ul>
+        </rd-widget-body>
+    </rd-widget>
+</div>

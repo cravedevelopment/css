@@ -1,0 +1,260 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+.required:before { 
+    
+    content:"* "; 
+    color:red; 
+    font: bold;
+   
+    /* background-image: url('/Img/required.png');
+	    background-repeat: no-repeat;
+	    background-position: 50% 50%; */
+
+}
+
+
+.validation-error {
+    color: Maroon;
+    font-weight: bold;   
+    background-color: #ffeeee;
+    border-bottom-color:red;   
+    border-top-color:red;   
+    border-left-color:red;   
+    border-right-color:red;   
+}
+
+
+
+.flex-h {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.flex-v {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.flex-h > * {
+    flex: 1 1;
+}
+
+.flex.grow {
+    flex: 1 0 auto;
+}
+
+.flex.nogrow {
+    flex: 0 1 auto;
+}
+
+/* selection lists */
+.selectlist {
+    margin: 0;
+    padding: 1.5em 0;
+    background-color: #DDD;
+}
+.selectlist a {
+    display: block;
+    color: black;
+    padding: 0.15em 1.5em;
+    text-decoration: none;
+    font-size: small;
+}
+.selectlist .selected {
+    background-color: cornflowerblue;
+}
+.selectlist .selected a {
+    color: white;
+}
+.selectlist i.fa {
+    width: 1.35em;
+}
+
+
+
+
+
+
+button.btn i + span {
+    margin-left: 0.75em;
+}
+
+.flex-h {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.flex-v {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.flex-h > * {
+    flex: 1 1;
+}
+
+.flex.grow {
+    flex: 1 0 auto;
+}
+
+.flex.nogrow {
+    flex: 0 1 auto;
+}
+
+
+.home.buttons {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+    height: 45%;
+}
+
+.home.buttons button {
+    padding: 2em;
+    margin: 0;
+    border: 3px solid black;
+    border-radius: 1em;
+    text-shadow: 0.1em 0.1em 0.1em black;
+}
+
+.home.buttons button i {
+    padding: 0;
+    margin: 0;
+    text-shadow: 0.1em 0.1em 0.1em black;
+}
+
+.navheader {
+    margin: 0.3em 0.3em 0 0.3em;
+}
+
+.navheader .nav-tabs li.active a:focus {
+    background-color: #f7f7f7;
+}
+
+.navheader .nav-tabs li.active a {
+    border-color: lightgray lightgray rgba(0,0,0,0) lightgray ;
+    background-color: #f7f7f7;
+}
+
+.navheader .nav-tabs li a {
+    border-width: 1px;
+    border-radius: 10px 10px 0 0;
+}
+
+.nav.navbar-nav .logged-in-user div.hoverdrop {
+    display: none;
+    position: absolute;
+    width: 100%;
+}
+
+.nav.navbar-nav .logged-in-user:hover div.hoverdrop {
+    display: flex;
+    flex-direction:row-reverse;
+}
+
+/* selection lists */
+.selectlist {
+    margin: 0;
+    padding: 1.5em 0;
+    background-color: #DDD;
+}
+.selectlist a {
+    display: block;
+    color: black;
+    padding: 0.15em 1.5em;
+    text-decoration: none;
+    font-size: small;
+}
+.selectlist .selected {
+    background-color: cornflowerblue;
+}
+.selectlist .selected a {
+    color: white;
+}
+.selectlist i.fa {
+    width: 1.35em;
+}
+
+.ellipsis {
+    text-overflow: ellipsis;
+}
+
+.dialog {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+}
+
+.dialog .backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: opacity 0.25s ease;
+    background: #000;
+    opacity: 0;
+}
+
+.dialog.active .backdrop {
+    opacity: 0.5;
+}
+
+.dialog .wrapper {
+    z-index: 1041;
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dialog .content {
+    transition: top 0.25s ease;
+    flex: 1 1 auto;
+    background: white;
+    padding: 2em;
+    position: relative;
+    top: -200px;
+}
+
+.dialog.active .content {
+    top: 4em;
+}
+
+
+.bounce-horizontal {
+    animation: bounce-horizontal 0.5s alternate infinite;
+}
+
+@keyframes bounce-horizontal {
+    0% { left: 1.5em; }
+    100% { left: 0.5em; }
+}

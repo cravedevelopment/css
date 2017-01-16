@@ -1,0 +1,2 @@
+AccountCode,TransactionNo,TransactionDate,TransactionDescription,TransactionDetails,ReferenceNo,TransactionType,TransactionAmount,BankAccount_AccountId
+90001001,Trans01111,2016-09-19,DEBIT,This is a test,0000002,1,1000,1

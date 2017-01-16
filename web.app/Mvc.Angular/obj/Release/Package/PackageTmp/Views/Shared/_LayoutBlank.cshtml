@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html ng-app="cssApp">
+<head>
+    <title>CSS</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/angular-block-ui.min.css" rel="stylesheet" />
+    <link href="~/Content/css/login.css" rel="stylesheet" type="text/css" />
+    <script src="/Scripts/angular/angular.js"></script>
+    <script src="~/Scripts/angular-ui/angular-block-ui.js"></script>
+    <script src="/Scripts/angular-ui/ui-bootstrap-tpls.js"></script>
+    <script src="/Scripts/angular/angular-ui-router.min.js"></script>
+    <script src="~/Scripts/angular/angular-sanitize.min.js"></script>
+    <script src="~/Scripts/angular-ui/uploader.min.js"></script>
+    @*<base href="/Security/Index/">*@
+
+</head>
+<body class="login">
+    @RenderBody()
+
+    <script src="~/scripts/app/cssApp.js"></script>
+    <script src="~/scripts/app/Login/loginController.js"></script>
+    <script src="~/scripts/app/Login/loginService.js"></script>
+    <script src="~/scripts/app/Shared/alertService.js"></script>
+    <script src="~/scripts/app/Shared/cssModuleService.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
